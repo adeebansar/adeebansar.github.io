@@ -1,0 +1,47 @@
+name: keep-streamlit-awake
+
+# Best-effort: free Streamlit Cloud apps sleep after inactivity. This loads each
+# app in a real headless browser (and clicks the "wake" button if shown) so the
+# live demo links stay warm for visitors. Runs every 2 days + on demand.
+on:
+  schedule:
+    - cron: "30 13 */2 * *"
+  workflow_dispatch:
+
+jobs:
+  wake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install playwright && python -m playwright install --with-deps chromium
+      - name: Wake apps
+        run: |
+          python - <<'PY'
+          from playwright.sync_api import sync_playwright
+
+          URLS = [
+              "https://data-governance-dashboard-gcsduhxqjh4dly9c8tzwqg.streamlit.app/",
+              "https://it-ops-rag-knowledge-assistant-d9av985rsk45q3rxdxgudn.streamlit.app/",
+              "https://ai-ticket-triage-87b6kxfhbygcpauecdjzti.streamlit.app/",
+          ]
+          with sync_playwright() as p:
+              browser = p.chromium.launch()
+              for url in URLS:
+                  page = browser.new_page()
+                  try:
+                      page.goto(url, timeout=90000, wait_until="domcontentloaded")
+                      try:
+                          page.get_by_text("get this app back up", exact=False).click(timeout=8000)
+                          print("clicked wake on", url)
+                      except Exception:
+                          pass
+                      page.wait_for_timeout(40000)
+                      print("warmed", url)
+                  except Exception as e:
+                      print("error", url, e)
+                  finally:
+                      page.close()
+              browser.close()
+          PY
