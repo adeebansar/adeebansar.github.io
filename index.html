@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adeeb Ansar Syed — Data &amp; AI Governance</title>
+<meta name="description" content="Operations leader who builds with AI. 10+ years in IT operations, business process, and data governance — now building AI and data-quality tools. Targeting data &amp; AI governance roles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Fira+Sans:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0B0F; --surface:rgba(255,255,255,.035); --surface-solid:#14161D;
+  --line:rgba(255,255,255,.08); --line-strong:rgba(255,255,255,.16);
+  --text:#F4F5F7; --muted:#9AA0AB; --dim:#6B7280;
+  --gold:#E5B567; --gold-soft:rgba(229,181,103,.14);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Fira Sans',system-ui,sans-serif; color:var(--text); line-height:1.7;
+  background:
+    radial-gradient(1100px 560px at 12% -10%, rgba(229,181,103,.10), transparent 60%),
+    radial-gradient(900px 520px at 100% 0%, rgba(59,130,246,.07), transparent 55%),
+    var(--bg);
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.mono{font-family:'Fira Code',monospace}
+
+nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);
+  background:rgba(10,11,15,.7);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+nav .brand{font-weight:600;letter-spacing:-.01em}
+nav .brand b{color:var(--gold)}
+nav .links{display:flex;gap:26px;font-size:14px;color:var(--muted)}
+nav .links a:hover{color:var(--text)}
+@media(max-width:640px){nav .links a:not(.btn){display:none}}
+
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-strong);
+  border-radius:10px;padding:10px 18px;font-size:14px;font-weight:500;
+  transition:border-color .2s,background .2s,transform .15s}
+.btn:hover{border-color:var(--gold);background:var(--gold-soft);transform:translateY(-1px)}
+.btn.primary{background:var(--gold);color:#1a1407;border-color:var(--gold)}
+.btn.primary:hover{filter:brightness(1.07)}
+
+header.hero{padding:84px 0 60px}
+.eyebrow{color:var(--gold);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+h1{font-size:clamp(2.4rem,1.4rem+4vw,4.2rem);font-weight:700;letter-spacing:-.03em;line-height:1.04;margin:14px 0 6px}
+h1 .grad{background:linear-gradient(120deg,var(--gold),#f0d6a3);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lede{font-size:clamp(1.05rem,.95rem+.5vw,1.3rem);color:var(--muted);max-width:680px;margin-top:14px}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero .meta{margin-top:26px;color:var(--dim);font-size:14px}
+.hero .meta b{color:var(--text);font-weight:500}
+
+section{padding:56px 0;border-top:1px solid var(--line)}
+.sec-label{color:var(--gold);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+h2{font-size:clamp(1.6rem,1.2rem+1.4vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin:8px 0 6px}
+.sec-sub{color:var(--muted);max-width:640px;margin-bottom:30px}
+
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+.card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface);
+  display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+.card .shot{aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--line);background:#0e0f15}
+.card .shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.card .body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card h3{font-size:1.18rem;font-weight:600;letter-spacing:-.01em}
+.card .tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-family:'Fira Code',monospace;font-size:11px;color:var(--gold);background:var(--gold-soft);
+  border-radius:6px;padding:3px 8px}
+.card p{font-size:14.5px;color:var(--muted);flex:1}
+.card .actions{display:flex;gap:10px;margin-top:4px}
+.card .actions a{font-size:13px;color:var(--text);border:1px solid var(--line-strong);
+  border-radius:8px;padding:7px 12px;transition:border-color .2s,background .2s}
+.card .actions a:hover{border-color:var(--gold);background:var(--gold-soft)}
+.card .actions a.live{border-color:var(--gold);color:var(--gold)}
+
+.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:40px}
+@media(max-width:760px){.about-grid{grid-template-columns:1fr}}
+.about p{color:var(--muted);margin-bottom:14px}
+.about p strong{color:var(--text);font-weight:500}
+.skills{display:flex;flex-wrap:wrap;gap:9px;align-content:flex-start}
+.skill{border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:13px;color:var(--text)}
+
+.video-card{border:1px dashed var(--line-strong);border-radius:16px;padding:26px;
+  display:flex;align-items:center;gap:18px;background:var(--surface)}
+.video-card .play{flex:0 0 52px;height:52px;border-radius:50%;background:var(--gold-soft);
+  border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:20px}
+.video-card .t{font-weight:500}
+.video-card .s{color:var(--dim);font-size:14px}
+
+footer{border-top:1px solid var(--line);padding:46px 0 60px}
+.foot{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.foot .links a{color:var(--muted);margin-right:18px;font-size:15px}
+.foot .links a:hover{color:var(--gold)}
+.sign-label{color:var(--muted);font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-align:right}
+.signature{font-family:'Great Vibes',cursive;color:var(--gold);font-size:2.6rem;line-height:1;
+  text-shadow:0 0 22px rgba(229,181,103,.28);text-align:right}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <div class="brand">Adeeb <b>Syed</b></div>
+  <div class="links">
+    <a href="#work">Work</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a class="btn" href="resume/Adeeb_Ansar_Syed_Resume.docx" download>Résumé</a>
+  </div>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">Data &amp; AI Governance · Data Quality · Operations</div>
+  <h1>Operations leader who <span class="grad">builds with AI</span></h1>
+  <p class="lede">10+ years running IT operations, business process, and data governance — including data-governance and SOP work at Novartis — now building AI and data-quality tools in Python. I turn messy operational data into governed, trustworthy systems.</p>
+  <div class="cta">
+    <a class="btn primary" href="#work">View my work →</a>
+    <a class="btn" href="resume/Adeeb_Ansar_Syed_Resume.docx" download>Download résumé</a>
+    <a class="btn" href="https://www.linkedin.com/in/ady555/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn" href="https://github.com/adeebansar" target="_blank" rel="noopener">GitHub</a>
+  </div>
+  <div class="meta">Targeting <b>data governance · data quality · AI governance · AI operations</b> roles · open to remote &amp; relocation, U.S.</div>
+</div></header>
+
+<section id="work"><div class="wrap">
+  <div class="sec-label">Featured work</div>
+  <h2>Three live, tested products</h2>
+  <p class="sec-sub">Each one is deployed and open-source — built to prove the work, not just describe it. Click through and try them.</p>
+  <div class="projects">
+
+    <div class="card">
+      <div class="shot"><img src="img/data-governance.png" alt="Data &amp; AI Governance Dashboard screenshot" loading="lazy"></div>
+      <div class="body">
+        <h3>Data &amp; AI Governance Dashboard</h3>
+        <div class="tags"><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">Streamlit</span></div>
+        <p>Scores any dataset across the eight standard data-quality dimensions, then runs an AI-governance data-risk assessment — PII exposure, representation/bias, AI-readiness — mapped to the NIST AI RMF and EU AI Act.</p>
+        <div class="actions">
+          <a class="live" href="https://data-governance-dashboard-gcsduhxqjh4dly9c8tzwqg.streamlit.app/" target="_blank" rel="noopener">Live demo ↗</a>
+          <a href="https://github.com/adeebansar/Data-Governance-Dashboard" target="_blank" rel="noopener">Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="shot"><img src="img/rag.png" alt="RAG Knowledge Assistant screenshot" loading="lazy"></div>
+      <div class="body">
+        <h3>RAG Knowledge Assistant for IT Ops</h3>
+        <div class="tags"><span class="tag">Python</span><span class="tag">LangChain</span><span class="tag">Chroma</span><span class="tag">Streamlit</span></div>
+        <p>Answers natural-language questions over SOPs, runbooks, and policies using semantic embeddings — with transparent source retrieval, so every answer is grounded in cited documents.</p>
+        <div class="actions">
+          <a class="live" href="https://it-ops-rag-knowledge-assistant-d9av985rsk45q3rxdxgudn.streamlit.app/" target="_blank" rel="noopener">Live demo ↗</a>
+          <a href="https://github.com/adeebansar/IT-Ops-RAG-Knowledge-Assistant" target="_blank" rel="noopener">Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="shot"><img src="img/triage.png" alt="AI Ticket Triage &amp; Routing screenshot" loading="lazy"></div>
+      <div class="body">
+        <h3>AI Ticket Triage &amp; Routing</h3>
+        <div class="tags"><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">Streamlit</span></div>
+        <p>Triages IT service-desk tickets for severity, priority, SLA risk, and the queue to route to — with the owning team and a recommended next action. Validated 24/24 against a labelled gold set.</p>
+        <div class="actions">
+          <a class="live" href="https://ai-ticket-triage-87b6kxfhbygcpauecdjzti.streamlit.app" target="_blank" rel="noopener">Live demo ↗</a>
+          <a href="https://github.com/adeebansar/ai-ticket-triage" target="_blank" rel="noopener">Code</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div></section>
+
+<section id="about"><div class="wrap">
+  <div class="sec-label">About</div>
+  <h2>Where operational rigor meets responsible AI</h2>
+  <div class="about-grid">
+    <div class="about">
+      <p>I spent a decade making operations work — leading <strong>70+ person teams</strong>, standardizing SOPs, and building the KPI dashboards that leaders actually trust. At <strong>Novartis</strong>, I ran data governance and data-quality work in portfolio strategy and implementation.</p>
+      <p>Now I build the AI side myself: <strong>RAG assistants, agent workflows, and data-quality engines</strong> in Python. The combination is rare — someone who understands governance and process <em>and</em> ships AI that's measurable, auditable, and trustworthy.</p>
+      <p>I hold an <strong>MS in Computer Science</strong> and I'm focused on data governance, data quality, and AI governance roles.</p>
+    </div>
+    <div class="skills">
+      <span class="skill">Data governance &amp; quality</span>
+      <span class="skill">Responsible AI / AI risk</span>
+      <span class="skill">LLM / RAG / agents</span>
+      <span class="skill">Python</span>
+      <span class="skill">SQL</span>
+      <span class="skill">Power BI · Tableau</span>
+      <span class="skill">ITIL · ITSM</span>
+      <span class="skill">Process improvement</span>
+      <span class="skill">NIST AI RMF · EU AI Act</span>
+      <span class="skill">Stakeholder leadership</span>
+    </div>
+  </div>
+  <div style="margin-top:30px" class="video-card">
+    <div class="play">▶</div>
+    <div><div class="t">A 60-second AI intro is on the way.</div><div class="s">Built with my own AI avatar — proof I ship AI content, not just talk about it.</div></div>
+  </div>
+</div></section>
+
+<footer id="contact"><div class="wrap">
+  <div class="sec-label">Get in touch</div>
+  <h2 style="margin-bottom:18px">Let's talk.</h2>
+  <div class="foot">
+    <div class="links">
+      <a href="mailto:ady.states@gmail.com">ady.states@gmail.com</a>
+      <a href="https://www.linkedin.com/in/ady555/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/adeebansar" target="_blank" rel="noopener">GitHub</a>
+      <a href="resume/Adeeb_Ansar_Syed_Resume.docx" download>Résumé</a>
+    </div>
+    <div><div class="sign-label">Built by</div><div class="signature">Adeeb Syed</div></div>
+  </div>
+</div></footer>
+
+</body>
+</html>
