@@ -7,136 +7,260 @@
 <meta name="description" content="Operations leader who builds with AI. 10+ years in IT operations, business process, and data governance — now building AI and data-quality tools. Targeting data &amp; AI governance roles.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Fira+Sans:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Fira+Sans:wght@300;400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0A0B0F; --surface:rgba(255,255,255,.035); --surface-solid:#14161D;
+  --bg:#08090C; --bg2:#0C0E13;
+  --surface:rgba(255,255,255,.035); --surface-2:rgba(255,255,255,.06);
   --line:rgba(255,255,255,.08); --line-strong:rgba(255,255,255,.16);
-  --text:#F4F5F7; --muted:#9AA0AB; --dim:#6B7280;
-  --gold:#E5B567; --gold-soft:rgba(229,181,103,.14);
+  --text:#F2F3F5; --muted:#9AA0AB; --dim:#6B7280;
+  --red:#E11D2E; --red-bright:#FF3B45; --red-soft:rgba(225,29,46,.14);
+  --red-line:rgba(225,29,46,.40); --red-glow:rgba(225,29,46,.22);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  font-family:'Fira Sans',system-ui,sans-serif; color:var(--text); line-height:1.7;
+  font-family:'Fira Sans',system-ui,sans-serif;color:var(--text);line-height:1.7;
   background:
-    radial-gradient(1100px 560px at 12% -10%, rgba(229,181,103,.10), transparent 60%),
-    radial-gradient(900px 520px at 100% 0%, rgba(59,130,246,.07), transparent 55%),
+    radial-gradient(900px 520px at 8% -8%, var(--red-glow), transparent 55%),
+    radial-gradient(820px 520px at 102% 8%, rgba(225,29,46,.10), transparent 55%),
     var(--bg);
-  -webkit-font-smoothing:antialiased;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
 a{color:inherit;text-decoration:none}
-.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 28px}
 .mono{font-family:'Fira Code',monospace}
+.eyebrow{color:var(--red-bright);font-size:12.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
 
-nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(10px);
-  background:rgba(10,11,15,.7);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
-nav .brand{font-weight:600;letter-spacing:-.01em}
-nav .brand b{color:var(--gold)}
-nav .links{display:flex;gap:26px;font-size:14px;color:var(--muted)}
-nav .links a:hover{color:var(--text)}
-@media(max-width:640px){nav .links a:not(.btn){display:none}}
+/* nav */
+nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);
+  background:rgba(8,9,12,.72);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
+.brand{font-weight:700;letter-spacing:.02em;font-size:18px}
+.brand b{color:var(--red)}
+.nav-links{display:flex;align-items:center;gap:28px;font-size:14px;color:var(--muted)}
+.nav-links a:not(.btn):hover{color:var(--text)}
+@media(max-width:720px){.nav-links a:not(.btn){display:none}}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:10px 20px;
+  font-size:14px;font-weight:500;border:1px solid var(--line-strong);
+  transition:border-color .2s,background .2s,transform .15s,box-shadow .2s}
+.btn:hover{border-color:var(--red);transform:translateY(-1px)}
+.btn.primary{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 8px 30px -10px var(--red)}
+.btn.primary:hover{background:var(--red-bright);box-shadow:0 10px 36px -8px var(--red)}
 
-.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line-strong);
-  border-radius:10px;padding:10px 18px;font-size:14px;font-weight:500;
-  transition:border-color .2s,background .2s,transform .15s}
-.btn:hover{border-color:var(--gold);background:var(--gold-soft);transform:translateY(-1px)}
-.btn.primary{background:var(--gold);color:#1a1407;border-color:var(--gold)}
-.btn.primary:hover{filter:brightness(1.07)}
+/* social rail */
+.rail{position:fixed;left:18px;top:50%;transform:translateY(-50%);z-index:25;
+  display:flex;flex-direction:column;gap:12px}
+.rail a{width:38px;height:38px;border:1px solid var(--line);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;color:var(--muted);
+  background:rgba(255,255,255,.02);transition:all .2s}
+.rail a:hover{color:#fff;border-color:var(--red);box-shadow:0 0 18px -2px var(--red-glow);transform:translateY(-2px)}
+.rail svg{width:17px;height:17px}
+@media(max-width:980px){.rail{display:none}}
 
-header.hero{padding:84px 0 60px}
-.eyebrow{color:var(--gold);font-size:13px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
-h1{font-size:clamp(2.4rem,1.4rem+4vw,4.2rem);font-weight:700;letter-spacing:-.03em;line-height:1.04;margin:14px 0 6px}
-h1 .grad{background:linear-gradient(120deg,var(--gold),#f0d6a3);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p.lede{font-size:clamp(1.05rem,.95rem+.5vw,1.3rem);color:var(--muted);max-width:680px;margin-top:14px}
-.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.hero .meta{margin-top:26px;color:var(--dim);font-size:14px}
-.hero .meta b{color:var(--text);font-weight:500}
+/* hero */
+.hero{position:relative;padding:38px 0 26px;min-height:640px;
+  display:grid;grid-template-columns:1fr 1.05fr;align-items:center;gap:20px}
+.hero-visual{position:relative;justify-self:center;align-self:end}
+.hero-visual::before{content:"";position:absolute;inset:-8% -6% -2% -6%;z-index:0;
+  background:radial-gradient(60% 55% at 50% 42%, var(--red-glow), transparent 70%);filter:blur(8px)}
+.hero-visual img{position:relative;z-index:1;width:min(420px,46vw);height:auto;display:block;
+  -webkit-mask-image:radial-gradient(125% 100% at 50% 38%, #000 58%, transparent 92%);
+          mask-image:radial-gradient(125% 100% at 50% 38%, #000 58%, transparent 92%)}
+.hero-copy h1{font-size:clamp(2.6rem,1.5rem+4.4vw,4.6rem);font-weight:800;letter-spacing:-.03em;line-height:1.02}
+.hero-copy h1 .red{color:var(--red);text-shadow:0 0 38px var(--red-glow)}
+.hero-copy p.lede{color:var(--muted);max-width:520px;margin-top:18px;font-size:clamp(1rem,.94rem+.3vw,1.16rem)}
+.hero-copy .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.deco{position:absolute;right:-2%;top:18%;z-index:0;opacity:.5;
+  width:130px;height:130px;color:var(--red);pointer-events:none}
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr;text-align:center;padding-top:24px}
+  .hero-visual{order:-1}.hero-visual img{width:min(300px,72vw)}
+  .hero-copy p.lede{margin-left:auto;margin-right:auto}
+  .hero-copy .cta{justify-content:center}.deco{display:none}
+}
 
-section{padding:56px 0;border-top:1px solid var(--line)}
-.sec-label{color:var(--gold);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
-h2{font-size:clamp(1.6rem,1.2rem+1.4vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin:8px 0 6px}
-.sec-sub{color:var(--muted);max-width:640px;margin-bottom:30px}
+/* pill banner = AI intro teaser */
+.pill{margin:6px 0 8px;border:1px solid var(--line);border-radius:999px;
+  background:linear-gradient(90deg,var(--surface),rgba(225,29,46,.06));
+  display:flex;align-items:center;gap:18px;padding:16px 24px;
+  box-shadow:0 0 50px -24px var(--red-glow)}
+.pill .play{flex:0 0 46px;height:46px;border-radius:50%;border:1px solid var(--red);
+  color:var(--red-bright);display:flex;align-items:center;justify-content:center;
+  background:var(--red-soft);font-size:16px}
+.pill .pt{font-weight:600}.pill .ps{color:var(--dim);font-size:13.5px}
+.pill .tag{margin-left:auto;font-family:'Fira Code',monospace;font-size:12px;color:var(--red-bright);
+  border:1px solid var(--red-line);border-radius:999px;padding:6px 14px;white-space:nowrap}
+@media(max-width:640px){.pill .tag{display:none}}
 
+/* sections */
+section{padding:62px 0;border-top:1px solid var(--line)}
+.sec-label{color:var(--red-bright);font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+h2{font-size:clamp(1.7rem,1.2rem+1.6vw,2.5rem);font-weight:700;letter-spacing:-.02em;margin:10px 0 8px}
+.sec-sub{color:var(--muted);max-width:640px;margin-bottom:36px}
+
+/* feature columns */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+@media(max-width:760px){.pillars{grid-template-columns:1fr;gap:34px;text-align:center}}
+.pillar .ic{width:72px;height:72px;border-radius:50%;border:1px solid var(--red-line);
+  display:flex;align-items:center;justify-content:center;color:var(--red-bright);
+  background:radial-gradient(circle at 50% 38%, var(--red-soft), transparent 70%);
+  box-shadow:0 0 34px -10px var(--red-glow), inset 0 0 22px -8px var(--red-glow);margin-bottom:18px}
+@media(max-width:760px){.pillar .ic{margin-left:auto;margin-right:auto}}
+.pillar .ic svg{width:30px;height:30px}
+.pillar h3{font-size:1.2rem;font-weight:600;margin-bottom:7px}
+.pillar p{color:var(--muted);font-size:14.5px}
+
+/* approach (checklist + image) */
+.approach{display:grid;grid-template-columns:1.1fr .9fr;gap:54px;align-items:center}
+@media(max-width:860px){.approach{grid-template-columns:1fr;gap:36px}}
+.checklist{display:flex;flex-direction:column;gap:24px;margin-top:8px}
+.check{display:flex;gap:16px;align-items:flex-start}
+.check .ck{flex:0 0 30px;height:30px;border-radius:9px;border:1px solid var(--red-line);
+  display:flex;align-items:center;justify-content:center;color:var(--red-bright);
+  background:var(--red-soft);box-shadow:0 0 18px -6px var(--red-glow)}
+.check .ck svg{width:16px;height:16px}
+.check h4{font-size:1.1rem;font-weight:600;margin-bottom:2px}
+.check p{color:var(--muted);font-size:14.5px;max-width:420px}
+.approach-visual{position:relative;justify-self:center}
+.approach-visual::before{content:"";position:absolute;inset:-6%;z-index:0;
+  background:radial-gradient(58% 52% at 55% 45%, var(--red-glow), transparent 70%)}
+.approach-visual img{position:relative;z-index:1;width:min(330px,80vw);border-radius:18px;
+  border:1px solid var(--line);display:block;
+  filter:saturate(.55) sepia(.35) hue-rotate(-18deg) contrast(1.05);
+  box-shadow:0 30px 80px -30px rgba(0,0,0,.8)}
+
+/* projects */
 .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
 .card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--surface);
-  display:flex;flex-direction:column;transition:border-color .2s,transform .2s}
-.card:hover{border-color:var(--line-strong);transform:translateY(-3px)}
+  display:flex;flex-direction:column;transition:border-color .2s,transform .2s,box-shadow .2s}
+.card:hover{border-color:var(--red-line);transform:translateY(-3px);box-shadow:0 20px 50px -28px var(--red-glow)}
 .card .shot{aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--line);background:#0e0f15}
 .card .shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
 .card .body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
-.card h3{font-size:1.18rem;font-weight:600;letter-spacing:-.01em}
-.card .tags{display:flex;flex-wrap:wrap;gap:6px}
-.tag{font-family:'Fira Code',monospace;font-size:11px;color:var(--gold);background:var(--gold-soft);
-  border-radius:6px;padding:3px 8px}
+.card h3{font-size:1.16rem;font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag2{font-family:'Fira Code',monospace;font-size:11px;color:var(--red-bright);background:var(--red-soft);border-radius:6px;padding:3px 8px}
 .card p{font-size:14.5px;color:var(--muted);flex:1}
-.card .actions{display:flex;gap:10px;margin-top:4px}
-.card .actions a{font-size:13px;color:var(--text);border:1px solid var(--line-strong);
-  border-radius:8px;padding:7px 12px;transition:border-color .2s,background .2s}
-.card .actions a:hover{border-color:var(--gold);background:var(--gold-soft)}
-.card .actions a.live{border-color:var(--gold);color:var(--gold)}
+.actions{display:flex;gap:10px;margin-top:4px}
+.actions a{font-size:13px;border:1px solid var(--line-strong);border-radius:8px;padding:7px 12px;transition:all .2s}
+.actions a:hover{border-color:var(--red);background:var(--red-soft)}
+.actions a.live{border-color:var(--red-line);color:var(--red-bright)}
 
-.about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:40px}
-@media(max-width:760px){.about-grid{grid-template-columns:1fr}}
-.about p{color:var(--muted);margin-bottom:14px}
-.about p strong{color:var(--text);font-weight:500}
-.skills{display:flex;flex-wrap:wrap;gap:9px;align-content:flex-start}
-.skill{border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-size:13px;color:var(--text)}
+/* skills */
+.skills{display:flex;flex-wrap:wrap;gap:9px;margin-top:8px}
+.skill{border:1px solid var(--line);border-radius:999px;padding:7px 15px;font-size:13px}
+.skill:hover{border-color:var(--red-line)}
 
-.video-card{border:1px dashed var(--line-strong);border-radius:16px;padding:26px;
-  display:flex;align-items:center;gap:18px;background:var(--surface)}
-.video-card .play{flex:0 0 52px;height:52px;border-radius:50%;background:var(--gold-soft);
-  border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:20px}
-.video-card .t{font-weight:500}
-.video-card .s{color:var(--dim);font-size:14px}
+/* contact */
+footer{border-top:1px solid var(--line);padding:60px 0 70px;
+  background:radial-gradient(700px 320px at 50% 120%, var(--red-glow), transparent 70%)}
+.foot{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:22px}
+.foot .links a{color:var(--muted);margin-right:20px;font-size:15px}
+.foot .links a:hover{color:var(--red-bright)}
+.sign-label{color:var(--muted);font-size:11px;letter-spacing:.16em;text-transform:uppercase;text-align:right}
+.signature{font-family:'Great Vibes',cursive;color:var(--red-bright);font-size:2.7rem;line-height:1;
+  text-shadow:0 0 26px var(--red-glow);text-align:right}
 
-footer{border-top:1px solid var(--line);padding:46px 0 60px}
-.foot{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px}
-.foot .links a{color:var(--muted);margin-right:18px;font-size:15px}
-.foot .links a:hover{color:var(--gold)}
-.sign-label{color:var(--muted);font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-align:right}
-.signature{font-family:'Great Vibes',cursive;color:var(--gold);font-size:2.6rem;line-height:1;
-  text-shadow:0 0 22px rgba(229,181,103,.28);text-align:right}
+/* fab */
+.fab{position:fixed;right:22px;bottom:22px;z-index:30;width:54px;height:54px;border-radius:50%;
+  background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 30px -6px var(--red);transition:transform .2s,background .2s}
+.fab:hover{transform:translateY(-3px) scale(1.05);background:var(--red-bright)}
+.fab svg{width:22px;height:22px}
 </style>
 </head>
 <body>
 
 <nav><div class="wrap">
-  <div class="brand">Adeeb <b>Syed</b></div>
-  <div class="links">
-    <a href="#work">Work</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-    <a class="btn" href="resume/Adeeb_Ansar_Syed_Resume.docx" download>Résumé</a>
+  <div class="brand">ADEEB <b>SYED</b></div>
+  <div class="nav-links">
+    <a href="#work">Work</a><a href="#approach">Approach</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+    <a class="btn primary" href="resume/Adeeb_Ansar_Syed_Resume.docx" download>Résumé</a>
   </div>
 </div></nav>
 
-<header class="hero"><div class="wrap">
-  <div class="eyebrow">Data &amp; AI Governance · Data Quality · Operations</div>
-  <h1>Operations leader who <span class="grad">builds with AI</span></h1>
-  <p class="lede">10+ years running IT operations, business process, and data governance — including data-governance and SOP work at Novartis — now building AI and data-quality tools in Python. I turn messy operational data into governed, trustworthy systems.</p>
-  <div class="cta">
-    <a class="btn primary" href="#work">View my work →</a>
-    <a class="btn" href="resume/Adeeb_Ansar_Syed_Resume.docx" download>Download résumé</a>
-    <a class="btn" href="https://www.linkedin.com/in/ady555/" target="_blank" rel="noopener">LinkedIn</a>
-    <a class="btn" href="https://github.com/adeebansar" target="_blank" rel="noopener">GitHub</a>
+<div class="rail">
+  <a href="https://www.linkedin.com/in/ady555/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-6.6c0-1.57-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.49V23h-4V8z"/></svg></a>
+  <a href="https://github.com/adeebansar" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58v-2.2c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.96 0-1.32.47-2.39 1.24-3.23-.12-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 016 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.23 0 4.63-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12.01 12.01 0 0024 12.5C24 5.87 18.63.5 12 .5z"/></svg></a>
+  <a href="mailto:ady.states@gmail.com" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/></svg></a>
+</div>
+
+<header class="hero">
+  <svg class="deco" viewBox="0 0 100 100" fill="currentColor"><g><circle cx="20" cy="20" r="2.6"/><circle cx="50" cy="20" r="2.6"/><circle cx="80" cy="20" r="2.6"/><circle cx="20" cy="50" r="2.6"/><circle cx="50" cy="50" r="2.6"/><circle cx="80" cy="50" r="2.6"/><circle cx="20" cy="80" r="2.6"/><circle cx="50" cy="80" r="2.6"/><circle cx="80" cy="80" r="2.6"/></g></svg>
+  <div class="hero-visual"><img src="img/avatar-red.png" alt="Adeeb Ansar Syed" fetchpriority="high"></div>
+  <div class="hero-copy">
+    <div class="eyebrow">Data &amp; AI Governance · Data Quality · Operations</div>
+    <h1 style="margin-top:14px">Operations leader<br><span class="red">who builds with AI</span></h1>
+    <p class="lede">10+ years running IT operations, business process, and data governance — including governance and SOP work at Novartis — now building AI and data-quality tools in Python. I turn messy operational data into governed, trustworthy systems.</p>
+    <div class="cta">
+      <a class="btn primary" href="#work">View my work →</a>
+      <a class="btn" href="resume/Adeeb_Ansar_Syed_Resume.docx" download>Download résumé</a>
+    </div>
   </div>
-  <div class="meta">Targeting <b>data governance · data quality · AI governance · AI operations</b> roles · open to remote &amp; relocation, U.S.</div>
-</div></header>
+</header>
+
+<div class="wrap">
+  <div class="pill">
+    <div class="play">▶</div>
+    <div><div class="pt">A 60-second AI intro is on the way.</div><div class="ps">Narrated by my own AI avatar — proof I ship AI content, not just talk about it.</div></div>
+    <div class="tag">Open to data &amp; AI governance roles</div>
+  </div>
+</div>
 
 <section id="work"><div class="wrap">
+  <div class="sec-label">What I do</div>
+  <h2>Three things I'm built for</h2>
+  <p class="sec-sub">A rare combination: someone who understands governance and process — and ships the AI that makes it faster and safer.</p>
+  <div class="pillars">
+    <div class="pillar">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg></div>
+      <h3>Data Governance &amp; Quality</h3>
+      <p>Data-quality scoring across eight dimensions, SOP standardization, stewardship, controls, and audit trails — the discipline that makes reporting trustworthy.</p>
+    </div>
+    <div class="pillar">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a4 4 0 0 1 4 4 4 4 0 0 1 0 8 4 4 0 0 1-8 0 4 4 0 0 1 0-8 4 4 0 0 1 4-4Z"/><path d="M12 2v20M8 6h0M16 6h0"/></svg></div>
+      <h3>Responsible AI &amp; Risk</h3>
+      <p>AI-governance assessments — PII exposure, bias, AI-readiness — mapped to the NIST AI RMF and EU AI Act, so AI ships measurable, auditable, and trusted.</p>
+    </div>
+    <div class="pillar">
+      <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9c.13.46.5.82 1.01 1.01H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg></div>
+      <h3>AI Operations &amp; Automation</h3>
+      <p>RAG assistants, agent workflows, and rules-based triage/routing — built on a decade of incident, change, and service-delivery operations.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="approach"><div class="wrap">
+  <div class="approach">
+    <div>
+      <div class="sec-label">Why me</div>
+      <h2>Where operational rigor meets responsible AI</h2>
+      <div class="checklist">
+        <div class="check"><div class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <div><h4>A decade of operations leadership</h4><p>Led 70+ person teams, standardized SOPs, and built the KPI dashboards leaders actually trust — including data-governance work at Novartis.</p></div></div>
+        <div class="check"><div class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <div><h4>Real, shipped AI products</h4><p>Three live, open-source tools — a data-quality &amp; AI-governance engine, a RAG assistant, and a triage engine — not slideware.</p></div></div>
+        <div class="check"><div class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <div><h4>Governance and trust by design</h4><p>AI risk built in from the start — PII, bias, auditability — mapped to recognized frameworks. An MS in Computer Science underneath it all.</p></div></div>
+      </div>
+    </div>
+    <div class="approach-visual"><img src="img/avatar.png" alt="Adeeb Ansar Syed" loading="lazy"></div>
+  </div>
+</div></section>
+
+<section id="projects"><div class="wrap">
   <div class="sec-label">Featured work</div>
   <h2>Three live, tested products</h2>
   <p class="sec-sub">Each one is deployed and open-source — built to prove the work, not just describe it. Click through and try them.</p>
   <div class="projects">
 
     <div class="card">
-      <div class="shot"><img src="img/data-governance.png" alt="Data &amp; AI Governance Dashboard screenshot" loading="lazy"></div>
+      <div class="shot"><img src="img/data-governance.png" alt="Data &amp; AI Governance Dashboard" loading="lazy"></div>
       <div class="body">
         <h3>Data &amp; AI Governance Dashboard</h3>
-        <div class="tags"><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">Streamlit</span></div>
-        <p>Scores any dataset across the eight standard data-quality dimensions, then runs an AI-governance data-risk assessment — PII exposure, representation/bias, AI-readiness — mapped to the NIST AI RMF and EU AI Act.</p>
+        <div class="tags"><span class="tag2">Python</span><span class="tag2">pandas</span><span class="tag2">Streamlit</span></div>
+        <p>Scores any dataset across the eight data-quality dimensions, then runs an AI-governance data-risk assessment — PII, bias, AI-readiness — mapped to the NIST AI RMF and EU AI Act.</p>
         <div class="actions">
           <a class="live" href="https://data-governance-dashboard-gcsduhxqjh4dly9c8tzwqg.streamlit.app/" target="_blank" rel="noopener">Live demo ↗</a>
           <a href="https://github.com/adeebansar/Data-Governance-Dashboard" target="_blank" rel="noopener">Code</a>
@@ -145,10 +269,10 @@ footer{border-top:1px solid var(--line);padding:46px 0 60px}
     </div>
 
     <div class="card">
-      <div class="shot"><img src="img/rag.png" alt="RAG Knowledge Assistant screenshot" loading="lazy"></div>
+      <div class="shot"><img src="img/rag.png" alt="RAG Knowledge Assistant" loading="lazy"></div>
       <div class="body">
         <h3>RAG Knowledge Assistant for IT Ops</h3>
-        <div class="tags"><span class="tag">Python</span><span class="tag">LangChain</span><span class="tag">Chroma</span><span class="tag">Streamlit</span></div>
+        <div class="tags"><span class="tag2">Python</span><span class="tag2">LangChain</span><span class="tag2">Chroma</span></div>
         <p>Answers natural-language questions over SOPs, runbooks, and policies using semantic embeddings — with transparent source retrieval, so every answer is grounded in cited documents.</p>
         <div class="actions">
           <a class="live" href="https://it-ops-rag-knowledge-assistant-d9av985rsk45q3rxdxgudn.streamlit.app/" target="_blank" rel="noopener">Live demo ↗</a>
@@ -158,11 +282,11 @@ footer{border-top:1px solid var(--line);padding:46px 0 60px}
     </div>
 
     <div class="card">
-      <div class="shot"><img src="img/triage.png" alt="AI Ticket Triage &amp; Routing screenshot" loading="lazy"></div>
+      <div class="shot"><img src="img/triage.png" alt="AI Ticket Triage &amp; Routing" loading="lazy"></div>
       <div class="body">
         <h3>AI Ticket Triage &amp; Routing</h3>
-        <div class="tags"><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">Streamlit</span></div>
-        <p>Triages IT service-desk tickets for severity, priority, SLA risk, and the queue to route to — with the owning team and a recommended next action. Validated 24/24 against a labelled gold set.</p>
+        <div class="tags"><span class="tag2">Python</span><span class="tag2">pandas</span><span class="tag2">Streamlit</span></div>
+        <p>Triages IT service-desk tickets for severity, priority, SLA risk, and routing — with the owning team and a recommended next action. Validated 24/24 against a labelled gold set.</p>
         <div class="actions">
           <a class="live" href="https://ai-ticket-triage-87b6kxfhbygcpauecdjzti.streamlit.app" target="_blank" rel="noopener">Live demo ↗</a>
           <a href="https://github.com/adeebansar/ai-ticket-triage" target="_blank" rel="noopener">Code</a>
@@ -171,39 +295,17 @@ footer{border-top:1px solid var(--line);padding:46px 0 60px}
     </div>
 
   </div>
-</div></section>
-
-<section id="about"><div class="wrap">
-  <div class="sec-label">About</div>
-  <h2>Where operational rigor meets responsible AI</h2>
-  <div class="about-grid">
-    <div class="about">
-      <p>I spent a decade making operations work — leading <strong>70+ person teams</strong>, standardizing SOPs, and building the KPI dashboards that leaders actually trust. At <strong>Novartis</strong>, I ran data governance and data-quality work in portfolio strategy and implementation.</p>
-      <p>Now I build the AI side myself: <strong>RAG assistants, agent workflows, and data-quality engines</strong> in Python. The combination is rare — someone who understands governance and process <em>and</em> ships AI that's measurable, auditable, and trustworthy.</p>
-      <p>I hold an <strong>MS in Computer Science</strong> and I'm focused on data governance, data quality, and AI governance roles.</p>
-    </div>
-    <div class="skills">
-      <span class="skill">Data governance &amp; quality</span>
-      <span class="skill">Responsible AI / AI risk</span>
-      <span class="skill">LLM / RAG / agents</span>
-      <span class="skill">Python</span>
-      <span class="skill">SQL</span>
-      <span class="skill">Power BI · Tableau</span>
-      <span class="skill">ITIL · ITSM</span>
-      <span class="skill">Process improvement</span>
-      <span class="skill">NIST AI RMF · EU AI Act</span>
-      <span class="skill">Stakeholder leadership</span>
-    </div>
-  </div>
-  <div style="margin-top:30px" class="video-card">
-    <div class="play">▶</div>
-    <div><div class="t">A 60-second AI intro is on the way.</div><div class="s">Built with my own AI avatar — proof I ship AI content, not just talk about it.</div></div>
+  <div class="skills" style="margin-top:34px">
+    <span class="skill">Data governance &amp; quality</span><span class="skill">Responsible AI / AI risk</span>
+    <span class="skill">LLM / RAG / agents</span><span class="skill">Python</span><span class="skill">SQL</span>
+    <span class="skill">Power BI · Tableau</span><span class="skill">ITIL · ITSM</span>
+    <span class="skill">NIST AI RMF · EU AI Act</span><span class="skill">Stakeholder leadership</span>
   </div>
 </div></section>
 
 <footer id="contact"><div class="wrap">
   <div class="sec-label">Get in touch</div>
-  <h2 style="margin-bottom:18px">Let's talk.</h2>
+  <h2 style="margin-bottom:20px">Let's talk.</h2>
   <div class="foot">
     <div class="links">
       <a href="mailto:ady.states@gmail.com">ady.states@gmail.com</a>
@@ -214,6 +316,8 @@ footer{border-top:1px solid var(--line);padding:46px 0 60px}
     <div><div class="sign-label">Built by</div><div class="signature">Adeeb Syed</div></div>
   </div>
 </div></footer>
+
+<a class="fab" href="mailto:ady.states@gmail.com" aria-label="Email me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/></svg></a>
 
 </body>
 </html>
