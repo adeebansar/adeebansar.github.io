@@ -10,11 +10,11 @@
 <meta property="og:url" content="https://adeebansar.github.io">
 <meta property="og:title" content="Adeeb Ansar Syed — Data &amp; AI Governance">
 <meta property="og:description" content="Operations leader who builds with AI. Three live, open-source AI &amp; data-quality projects.">
-<meta property="og:image" content="https://adeebansar.github.io/img/avatar-red.png">
+<meta property="og:image" content="https://adeebansar.github.io/img/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Adeeb Ansar Syed — Data &amp; AI Governance">
 <meta name="twitter:description" content="Operations leader who builds with AI. Three live AI &amp; data-quality projects.">
-<meta name="twitter:image" content="https://adeebansar.github.io/img/avatar-red.png">
+<meta name="twitter:image" content="https://adeebansar.github.io/img/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Fira+Code:wght@400;500&family=Fira+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -155,7 +155,13 @@ h2{font-size:clamp(1.7rem,1.2rem+1.6vw,2.5rem);font-weight:700;letter-spacing:-.
   display:flex;flex-direction:column;transition:border-color .2s,transform .2s,box-shadow .2s}
 .card:hover{border-color:var(--red-line);transform:translateY(-3px);box-shadow:0 20px 50px -28px var(--red-glow)}
 .card .shot{aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--line);background:#0e0f15}
-.card .shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.card .shot img,.card .shot video{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.stats{display:flex;flex-wrap:wrap;border:1px solid var(--line);border-radius:16px;background:var(--surface);margin:14px 0 4px;overflow:hidden}
+.stat{flex:1;min-width:150px;padding:20px 22px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:3px}
+.stat:last-child{border-right:none}
+.stat .n{font-size:1.9rem;font-weight:800;color:var(--red-bright);letter-spacing:-.02em;line-height:1}
+.stat .l{font-size:12.5px;color:var(--muted)}
+@media(max-width:640px){.stat{min-width:50%;border-right:none;border-bottom:1px solid var(--line)}}
 .card .body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
 .card h3{font-size:1.16rem;font-weight:600}
 .tags{display:flex;flex-wrap:wrap;gap:6px}
@@ -195,7 +201,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
   <div class="brand">ADEEB <b>SYED</b></div>
   <div class="nav-links">
     <a href="#work">Work</a><a href="#approach">Approach</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
-    <a class="btn primary" href="resume/Adeeb_Ansar_Syed_Resume.docx" download>Résumé</a>
+    <a class="btn primary" href="resume/Adeeb_Ansar_Syed_Resume.pdf" target="_blank" rel="noopener">Résumé</a>
   </div>
 </div></nav>
 
@@ -214,7 +220,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
     <p class="lede">10+ years running IT operations, business process, and data governance — including governance and SOP work at Novartis — now building AI and data-quality tools in Python. I turn messy operational data into governed, trustworthy systems.</p>
     <div class="cta">
       <a class="btn primary" href="#work">View my work →</a>
-      <a class="btn" href="resume/Adeeb_Ansar_Syed_Resume.docx" download>Download résumé</a>
+      <a class="btn" href="resume/Adeeb_Ansar_Syed_Resume.pdf" target="_blank" rel="noopener">Download résumé</a>
     </div>
   </div>
 </header>
@@ -226,6 +232,14 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
     <div class="tag">Open to data &amp; AI governance roles</div>
   </div>
 </div>
+
+<div class="wrap"><div class="stats">
+  <div class="stat"><span class="n">10+</span><span class="l">years in IT operations &amp; governance</span></div>
+  <div class="stat"><span class="n">70+</span><span class="l">team members led</span></div>
+  <div class="stat"><span class="n">3</span><span class="l">live, open-source AI apps</span></div>
+  <div class="stat"><span class="n">24/24</span><span class="l">triage routing accuracy</span></div>
+  <div class="stat"><span class="n">8</span><span class="l">data-quality dimensions scored</span></div>
+</div></div>
 
 <section id="work"><div class="wrap">
   <div class="sec-label">What I do</div>
@@ -275,7 +289,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
   <div class="projects">
 
     <div class="card">
-      <div class="shot"><img src="img/data-governance.png" alt="Data &amp; AI Governance Dashboard" loading="lazy"></div>
+      <div class="shot"><video autoplay muted loop playsinline poster="img/data-governance.png"><source src="img/data-governance.mp4" type="video/mp4"></video></div>
       <div class="body">
         <h3>Data &amp; AI Governance Dashboard</h3>
         <div class="tags"><span class="tag2">Python</span><span class="tag2">pandas</span><span class="tag2">Streamlit</span></div>
@@ -288,7 +302,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
     </div>
 
     <div class="card">
-      <div class="shot"><img src="img/rag.png" alt="RAG Knowledge Assistant" loading="lazy"></div>
+      <div class="shot"><video autoplay muted loop playsinline poster="img/rag.png"><source src="img/rag.mp4" type="video/mp4"></video></div>
       <div class="body">
         <h3>RAG Knowledge Assistant for IT Ops</h3>
         <div class="tags"><span class="tag2">Python</span><span class="tag2">LangChain</span><span class="tag2">Chroma</span></div>
@@ -301,7 +315,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
     </div>
 
     <div class="card">
-      <div class="shot"><img src="img/triage.png" alt="AI Ticket Triage &amp; Routing" loading="lazy"></div>
+      <div class="shot"><video autoplay muted loop playsinline poster="img/triage.png"><source src="img/triage.mp4" type="video/mp4"></video></div>
       <div class="body">
         <h3>AI Ticket Triage &amp; Routing</h3>
         <div class="tags"><span class="tag2">Python</span><span class="tag2">pandas</span><span class="tag2">Streamlit</span></div>
@@ -331,7 +345,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
       <a href="tel:+17742537469">+1 774 253 7469</a>
       <a href="https://www.linkedin.com/in/ady555/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/adeebansar" target="_blank" rel="noopener">GitHub</a>
-      <a href="resume/Adeeb_Ansar_Syed_Resume.docx" download>Résumé</a>
+      <a href="resume/Adeeb_Ansar_Syed_Resume.pdf" target="_blank" rel="noopener">Résumé</a>
     </div>
     <div><div class="sign-label">Built by</div><div class="signature">Adeeb Syed</div></div>
   </div>
