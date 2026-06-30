@@ -23,7 +23,7 @@
   --bg:#08090C; --bg2:#0C0E13;
   --surface:rgba(255,255,255,.035); --surface-2:rgba(255,255,255,.06);
   --line:rgba(255,255,255,.08); --line-strong:rgba(255,255,255,.16);
-  --text:#F2F3F5; --muted:#9AA0AB; --dim:#6B7280;
+  --text:#F2F3F5; --muted:#9AA0AB; --dim:#868D9B;
   --red:#E11D2E; --red-bright:#FF3B45; --red-soft:rgba(225,29,46,.14);
   --red-line:rgba(225,29,46,.40); --red-glow:rgba(225,29,46,.22);
 }
@@ -47,7 +47,7 @@ nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);
   background:rgba(8,9,12,.72);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px}
 .brand{font-weight:700;letter-spacing:.02em;font-size:18px}
-.brand b{color:var(--red)}
+.brand b{color:var(--red-bright)}
 .nav-links{display:flex;align-items:center;gap:28px;font-size:14px;color:var(--muted)}
 .nav-links a:not(.btn):hover{color:var(--text)}
 @media(max-width:720px){.nav-links a:not(.btn){display:none}}
@@ -81,10 +81,10 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .hero-copy h1 .red{color:var(--red);text-shadow:0 0 38px var(--red-glow)}
 .hero-copy p.lede{color:var(--muted);max-width:520px;margin-top:18px;font-size:clamp(1rem,.94rem+.3vw,1.16rem)}
 .hero-copy .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.video-frame{position:relative;z-index:1;width:min(420px,46vw);aspect-ratio:4/5;border-radius:20px;
-  border:1px solid var(--red-line);background:linear-gradient(160deg,rgba(225,29,46,.10),var(--surface));
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+.video-frame{position:relative;z-index:1;width:min(360px,40vw);aspect-ratio:9/16;border-radius:20px;overflow:hidden;
+  border:1px solid var(--red-line);background:var(--surface);
   box-shadow:0 0 60px -20px var(--red-glow), inset 0 0 44px -22px var(--red-glow)}
+.video-frame img,.video-frame video{width:100%;height:100%;object-fit:cover;display:block;background:#0A0B0F}
 .video-frame .vf-play{width:74px;height:74px;border-radius:50%;border:1px solid var(--red);
   background:var(--red-soft);color:var(--red-bright);display:flex;align-items:center;justify-content:center;
   font-size:26px;box-shadow:0 0 30px -6px var(--red-glow)}
@@ -218,7 +218,10 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
 
 <header class="hero">
   <svg class="deco" viewBox="0 0 100 100" fill="currentColor"><g><circle cx="20" cy="20" r="2.6"/><circle cx="50" cy="20" r="2.6"/><circle cx="80" cy="20" r="2.6"/><circle cx="20" cy="50" r="2.6"/><circle cx="50" cy="50" r="2.6"/><circle cx="80" cy="50" r="2.6"/><circle cx="20" cy="80" r="2.6"/><circle cx="50" cy="80" r="2.6"/><circle cx="80" cy="80" r="2.6"/></g></svg>
-  <div class="hero-visual"><div class="video-frame"><div class="vf-play">▶</div><div class="vf-cap">AI intro · 60 sec</div></div></div>
+  <div class="hero-visual"><div class="video-frame"><video poster="img/cover.jpg" controls preload="none" playsinline aria-label="74-second AI intro video — Adeeb Ansar Syed">
+    <source src="img/intro.mp4" type="video/mp4">
+    Your browser doesn't support the video tag.
+  </video></div></div>
   <div class="hero-copy">
     <div class="eyebrow">Data &amp; AI Governance · Data Quality · Operations</div>
     <h1 style="margin-top:14px">Operations leader<br><span class="red">who builds with AI</span></h1>
@@ -233,7 +236,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
 <div class="wrap">
   <div class="pill">
     <div class="play">▶</div>
-    <div><div class="pt">A 60-second AI intro is on the way.</div><div class="ps">Narrated by my own AI avatar — proof I ship AI content, not just talk about it.</div></div>
+    <div><div class="pt">My 74-second AI intro — press play above.</div><div class="ps">Narrated by my own AI avatar — proof I ship AI content, not just talk about it.</div></div>
     <div class="tag">Open to data &amp; AI governance roles</div>
   </div>
 </div>
@@ -241,9 +244,9 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
 <div class="wrap"><div class="stats">
   <div class="stat"><span class="n">10+</span><span class="l">years in IT operations &amp; governance</span></div>
   <div class="stat"><span class="n">70+</span><span class="l">team members led</span></div>
+  <div class="stat"><span class="n">+25%</span><span class="l">data quality at Novartis</span></div>
+  <div class="stat"><span class="n">&minus;40%</span><span class="l">reporting time cut</span></div>
   <div class="stat"><span class="n">3</span><span class="l">live, open-source AI apps</span></div>
-  <div class="stat"><span class="n">24/24</span><span class="l">triage routing accuracy</span></div>
-  <div class="stat"><span class="n">8</span><span class="l">data-quality dimensions scored</span></div>
 </div></div>
 
 <section id="work"><div class="wrap">
@@ -276,7 +279,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
       <h2>Where operational rigor meets responsible AI</h2>
       <div class="checklist">
         <div class="check"><div class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div>
-          <div><h4>A decade of operations leadership</h4><p>Led 70+ person teams, standardized SOPs, and built the KPI dashboards leaders actually trust — including data-governance work at Novartis.</p></div></div>
+          <div><h4>A decade of operations leadership</h4><p>Led 70+ person teams, standardized SOPs, and built the KPI dashboards leaders actually trust. At Novartis, my data-governance and SOP work lifted data quality 25% and cut reporting time 40%.</p></div></div>
         <div class="check"><div class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div>
           <div><h4>Real, shipped AI products</h4><p>Three live, open-source tools — a data-quality &amp; AI-governance engine, a RAG assistant, and a triage engine — not slideware.</p></div></div>
         <div class="check"><div class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div>
@@ -340,9 +343,11 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
     <span class="skill">NIST AI RMF · EU AI Act</span><span class="skill">Stakeholder leadership</span>
   </div>
   <div class="certs">
-    <span class="sec-label">Certifications</span>
+    <span class="sec-label">Education &amp; credentials</span>
     <div class="cert-list">
-      <div class="cert"><b>Career Essentials in Generative AI</b><span>Microsoft &amp; LinkedIn · in progress</span></div>
+      <div class="cert"><b>MS, Computer Science</b><span>Information Systems · Concordia University Wisconsin</span></div>
+      <div class="cert"><b>MBA, Human Resources</b><span>Osmania University</span></div>
+      <div class="cert"><b>Career Essentials in Generative AI</b><span>Microsoft · in progress</span></div>
       <div class="cert"><b>Introduction to AI for Work</b><span>DataCamp · 2026</span></div>
     </div>
   </div>
