@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>document.documentElement.classList.add('js')</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Adeeb Ansar Syed — Data &amp; AI Governance</title>
@@ -198,6 +199,29 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
   box-shadow:0 10px 30px -6px var(--red);transition:transform .2s,background .2s}
 .fab:hover{transform:translateY(-3px) scale(1.05);background:var(--red-bright)}
 .fab svg{width:22px;height:22px}
+
+/* ===== scroll-motion system (gated behind .js) ===== */
+.js [data-reveal]{opacity:0;transform:translateY(14px);will-change:opacity,transform}
+.js [data-reveal].is-visible{
+  opacity:1;transform:none;
+  transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .45s cubic-bezier(.16,1,.3,1);
+  transition-delay:calc(var(--i,0)*70ms);
+}
+/* stats count-up: mono figures + fixed-width digit span = zero CLS */
+.stat .n{display:inline-flex;align-items:baseline}
+.stat .num{font-family:'Fira Code',monospace;font-variant-numeric:tabular-nums;
+  display:inline-block;text-align:right}
+.js .stat .n[data-reveal-stat]{opacity:0;transform:translateY(14px);will-change:opacity,transform}
+.js .stat .n[data-reveal-stat].is-visible{
+  opacity:1;transform:none;
+  transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .45s cubic-bezier(.16,1,.3,1);
+}
+@media (prefers-reduced-motion: reduce){
+  .js [data-reveal],.js [data-reveal].is-visible,
+  .js .stat .n[data-reveal-stat],.js .stat .n[data-reveal-stat].is-visible{
+    opacity:1!important;transform:none!important;transition:none!important;
+  }
+}
 </style>
 </head>
 <body>
@@ -242,29 +266,31 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
 </div>
 
 <div class="wrap"><div class="stats">
-  <div class="stat"><span class="n">10+</span><span class="l">years in IT operations &amp; governance</span></div>
-  <div class="stat"><span class="n">70+</span><span class="l">team members led</span></div>
-  <div class="stat"><span class="n">+25%</span><span class="l">data quality at Novartis</span></div>
-  <div class="stat"><span class="n">&minus;40%</span><span class="l">reporting time cut</span></div>
-  <div class="stat"><span class="n">3</span><span class="l">live, open-source AI apps</span></div>
+  <div class="stat"><span class="n" data-reveal-stat><span class="num" data-to="10" style="min-width:2ch">10</span><span>+</span></span><span class="l">years in IT operations &amp; governance</span></div>
+  <div class="stat"><span class="n" data-reveal-stat><span class="num" data-to="70" style="min-width:2ch">70</span><span>+</span></span><span class="l">team members led</span></div>
+  <div class="stat"><span class="n" data-reveal-stat><span>+</span><span class="num" data-to="25" style="min-width:2ch">25</span><span>%</span></span><span class="l">data quality at Novartis</span></div>
+  <div class="stat"><span class="n" data-reveal-stat><span>&minus;</span><span class="num" data-to="40" style="min-width:2ch">40</span><span>%</span></span><span class="l">reporting time cut</span></div>
+  <div class="stat"><span class="n" data-reveal-stat><span class="num" data-to="3" style="min-width:1ch">3</span></span><span class="l">live, open-source AI apps</span></div>
 </div></div>
 
 <section id="work"><div class="wrap">
-  <div class="sec-label">What I do</div>
-  <h2>Three things I'm built for</h2>
-  <p class="sec-sub">A rare combination: someone who understands governance and process — and ships the AI that makes it faster and safer.</p>
+  <div data-reveal>
+    <div class="sec-label">What I do</div>
+    <h2>Three things I'm built for</h2>
+    <p class="sec-sub">A rare combination: someone who understands governance and process — and ships the AI that makes it faster and safer.</p>
+  </div>
   <div class="pillars">
-    <div class="pillar">
+    <div class="pillar" data-reveal style="--i:0">
       <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg></div>
       <h3>Data Governance &amp; Quality</h3>
       <p>Data-quality scoring across eight dimensions, SOP standardization, stewardship, controls, and audit trails — the discipline that makes reporting trustworthy.</p>
     </div>
-    <div class="pillar">
+    <div class="pillar" data-reveal style="--i:1">
       <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a4 4 0 0 1 4 4 4 4 0 0 1 0 8 4 4 0 0 1-8 0 4 4 0 0 1 0-8 4 4 0 0 1 4-4Z"/><path d="M12 2v20M8 6h0M16 6h0"/></svg></div>
       <h3>Responsible AI &amp; Risk</h3>
       <p>AI-governance assessments — PII exposure, bias, AI-readiness — mapped to the NIST AI RMF and EU AI Act, so AI ships measurable, auditable, and trusted.</p>
     </div>
-    <div class="pillar">
+    <div class="pillar" data-reveal style="--i:2">
       <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9c.13.46.5.82 1.01 1.01H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg></div>
       <h3>AI Operations &amp; Automation</h3>
       <p>RAG assistants, agent workflows, and rules-based triage/routing — built on a decade of incident, change, and service-delivery operations.</p>
@@ -275,14 +301,16 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
 <section id="approach"><div class="wrap">
   <div class="approach">
     <div>
-      <div class="sec-label">Why me</div>
-      <h2>Where operational rigor meets responsible AI</h2>
+      <div data-reveal>
+        <div class="sec-label">Why me</div>
+        <h2>Where operational rigor meets responsible AI</h2>
+      </div>
       <div class="checklist">
-        <div class="check"><div class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div class="check" data-reveal style="--i:0"><div class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div>
           <div><h4>A decade of operations leadership</h4><p>Led 70+ person teams, standardized SOPs, and built the KPI dashboards leaders actually trust. At Novartis, my data-governance and SOP work lifted data quality 25% and cut reporting time 40%.</p></div></div>
-        <div class="check"><div class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div class="check" data-reveal style="--i:1"><div class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div>
           <div><h4>Real, shipped AI products</h4><p>Three live, open-source tools — a data-quality &amp; AI-governance engine, a RAG assistant, and a triage engine — not slideware.</p></div></div>
-        <div class="check"><div class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <div class="check" data-reveal style="--i:2"><div class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg></div>
           <div><h4>Governance and trust by design</h4><p>AI risk built in from the start — PII, bias, auditability — mapped to recognized frameworks. An MS in Computer Science underneath it all.</p></div></div>
       </div>
     </div>
@@ -291,13 +319,15 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
 </div></section>
 
 <section id="projects"><div class="wrap">
-  <div class="sec-label">Featured work</div>
-  <h2>Three live, tested products</h2>
-  <p class="sec-sub">Each one is deployed and open-source — built to prove the work, not just describe it. Click through and try them. <span style="color:var(--dim)">(Live demos run on free hosting and may take ~20s to spin up.)</span></p>
+  <div data-reveal>
+    <div class="sec-label">Featured work</div>
+    <h2>Three live, tested products</h2>
+    <p class="sec-sub">Each one is deployed and open-source — built to prove the work, not just describe it. Click through and try them. <span style="color:var(--dim)">(Live demos run on free hosting and may take ~20s to spin up.)</span></p>
+  </div>
   <div class="projects">
 
-    <div class="card">
-      <div class="shot"><video autoplay muted loop playsinline poster="img/data-governance.png"><source src="img/data-governance.mp4" type="video/mp4"></video></div>
+    <div class="card" data-reveal style="--i:0">
+      <div class="shot"><video muted loop playsinline preload="none" poster="img/data-governance.png"><source src="img/data-governance.mp4" type="video/mp4"></video></div>
       <div class="body">
         <h3>Data &amp; AI Governance Dashboard</h3>
         <div class="tags"><span class="tag2">Python</span><span class="tag2">pandas</span><span class="tag2">Streamlit</span></div>
@@ -309,8 +339,8 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
       </div>
     </div>
 
-    <div class="card">
-      <div class="shot"><video autoplay muted loop playsinline poster="img/rag.png"><source src="img/rag.mp4" type="video/mp4"></video></div>
+    <div class="card" data-reveal style="--i:1">
+      <div class="shot"><video muted loop playsinline preload="none" poster="img/rag.png"><source src="img/rag.mp4" type="video/mp4"></video></div>
       <div class="body">
         <h3>RAG Knowledge Assistant for IT Ops</h3>
         <div class="tags"><span class="tag2">Python</span><span class="tag2">LangChain</span><span class="tag2">Chroma</span></div>
@@ -322,8 +352,8 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
       </div>
     </div>
 
-    <div class="card">
-      <div class="shot"><video autoplay muted loop playsinline poster="img/triage.png"><source src="img/triage.mp4" type="video/mp4"></video></div>
+    <div class="card" data-reveal style="--i:2">
+      <div class="shot"><video muted loop playsinline preload="none" poster="img/triage.png"><source src="img/triage.mp4" type="video/mp4"></video></div>
       <div class="body">
         <h3>AI Ticket Triage &amp; Routing</h3>
         <div class="tags"><span class="tag2">Python</span><span class="tag2">pandas</span><span class="tag2">Streamlit</span></div>
@@ -336,13 +366,13 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
     </div>
 
   </div>
-  <div class="skills" style="margin-top:34px">
+  <div class="skills" style="margin-top:34px" data-reveal>
     <span class="skill">Data governance &amp; quality</span><span class="skill">Responsible AI / AI risk</span>
     <span class="skill">LLM / RAG / agents</span><span class="skill">Python</span><span class="skill">SQL</span>
     <span class="skill">Power BI · Tableau</span><span class="skill">ITIL · ITSM</span>
     <span class="skill">NIST AI RMF · EU AI Act</span><span class="skill">Stakeholder leadership</span>
   </div>
-  <div class="certs">
+  <div class="certs" data-reveal>
     <span class="sec-label">Education &amp; credentials</span>
     <div class="cert-list">
       <div class="cert"><b>MS, Computer Science</b><span>Information Systems · Concordia University Wisconsin</span></div>
@@ -353,7 +383,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
   </div>
 </div></section>
 
-<footer id="contact"><div class="wrap">
+<footer id="contact"><div class="wrap" data-reveal>
   <div class="sec-label">Get in touch</div>
   <h2 style="margin-bottom:20px">Let's talk.</h2>
   <div class="foot">
@@ -369,6 +399,80 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
 </div></footer>
 
 <a class="fab" href="mailto:ady.states@gmail.com" aria-label="Email me"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/></svg></a>
+
+<script>
+(function(){
+  "use strict";
+  var reduceMotion = window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ---- shared reveal observer (one-shot) ----
+  var revealEls = document.querySelectorAll("[data-reveal], .stat .n[data-reveal-stat]");
+  if ("IntersectionObserver" in window && revealEls.length){
+    var revealIO = new IntersectionObserver(function(entries, obs){
+      entries.forEach(function(entry){
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        el.classList.add("is-visible");
+        if (el.hasAttribute("data-reveal-stat")) runCount(el);
+        obs.unobserve(el);
+      });
+    }, { rootMargin: "0px 0px -12% 0px" });
+    revealEls.forEach(function(el){ revealIO.observe(el); });
+  } else {
+    // no IO support: show everything, no animation
+    revealEls.forEach(function(el){ el.classList.add("is-visible"); });
+  }
+
+  // ---- stats count-up ----
+  // ease-out cubic: decelerates and settles, no overshoot
+  function easeOut(t){ return 1 - Math.pow(1 - t, 3); }
+
+  function runCount(statEl){
+    var nums = statEl.querySelectorAll(".num[data-to]");
+    nums.forEach(function(span, i){
+      var to = parseInt(span.getAttribute("data-to"), 10);
+      if (isNaN(to)) return;
+      // reduced motion / no rAF: leave pre-rendered final value untouched
+      if (reduceMotion || !window.requestAnimationFrame){
+        span.textContent = String(to);
+        return;
+      }
+      var duration = 600;       // ms
+      var delay = i * 80;       // left-to-right stagger
+      var start = null;
+      function frame(now){
+        if (start === null) start = now;
+        var elapsed = now - start - delay;
+        if (elapsed < 0){ window.requestAnimationFrame(frame); return; }
+        var t = Math.min(elapsed / duration, 1);
+        span.textContent = String(Math.round(easeOut(t) * to));
+        if (t < 1) window.requestAnimationFrame(frame);
+        else span.textContent = String(to);
+      }
+      span.textContent = "0";
+      window.requestAnimationFrame(frame);
+    });
+  }
+
+  // ---- video play-on-view gating (separate observer) ----
+  var demoVideos = document.querySelectorAll(".card .shot video");
+  if ("IntersectionObserver" in window && demoVideos.length){
+    var videoIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var v = entry.target;
+        if (entry.isIntersecting){
+          var p = v.play();
+          if (p && typeof p.catch === "function") p.catch(function(){});
+        } else {
+          v.pause();
+        }
+      });
+    }, { threshold: 0.25 });
+    demoVideos.forEach(function(v){ videoIO.observe(v); });
+  }
+})();
+</script>
 
 </body>
 </html>
