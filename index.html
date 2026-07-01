@@ -220,11 +220,16 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
 .js .stat .n[data-reveal-stat]{opacity:0;transform:translateY(14px);will-change:opacity,transform;
   transition:opacity .45s cubic-bezier(.16,1,.3,1),transform .45s cubic-bezier(.16,1,.3,1)}
 .js .stat .n[data-reveal-stat].is-visible{opacity:1;transform:none}
-/* pillar icons: 3D flip-in; re-triggers each time they scroll into view */
-.js .pillar .ic{opacity:0;transform:perspective(600px) rotateY(-90deg);transform-origin:center;
-  backface-visibility:hidden;will-change:opacity,transform;
-  transition:opacity .5s ease .1s,transform .6s cubic-bezier(.2,.75,.2,1) .1s}
-.js .pillar .ic.flip-in{opacity:1;transform:perspective(600px) rotateY(0)}
+/* pillar icons: the ring "lights up" — draws a full circle when the section scrolls in */
+@property --ring-a{syntax:"<angle>";inherits:false;initial-value:0deg}
+.js .pillar .ic{position:relative}
+.js .pillar .ic::after{content:"";position:absolute;inset:-2px;border-radius:50%;pointer-events:none;opacity:0;
+  background:conic-gradient(from -90deg, var(--red-bright) var(--ring-a), transparent 0);
+  filter:drop-shadow(0 0 6px var(--red-glow));
+  -webkit-mask:radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+          mask:radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px))}
+.js .pillar .ic.ring-in::after{opacity:1;animation:ringDraw .9s cubic-bezier(.35,0,.25,1) forwards}
+@keyframes ringDraw{from{--ring-a:0deg}to{--ring-a:360deg}}
 /* checklist verify-in: tick draws itself when its row reveals (CSS only) */
 .js .check .ck svg path{stroke-dasharray:24;stroke-dashoffset:24;will-change:stroke-dashoffset}
 .js .check.is-visible .ck svg path{stroke-dashoffset:0;
@@ -235,10 +240,10 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
 .js .signature.sig-in{clip-path:inset(0 0 -0.2em 0)}
 @media (prefers-reduced-motion: reduce){
   .js [data-reveal],.js [data-reveal].is-visible,
-  .js .stat .n[data-reveal-stat],.js .stat .n[data-reveal-stat].is-visible,
-  .js .pillar .ic,.js .pillar .ic.flip-in{
+  .js .stat .n[data-reveal-stat],.js .stat .n[data-reveal-stat].is-visible{
     opacity:1!important;transform:none!important;transition:none!important;
   }
+  .js .pillar .ic.ring-in::after{--ring-a:360deg;opacity:1;animation:none!important}
   .js .signature,.js .signature.sig-in{clip-path:none!important;transition:none!important}
   .js .check .ck svg path,.js .check.is-visible .ck svg path{
     stroke-dashoffset:0!important;transition:none!important;
@@ -516,24 +521,24 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;
         if (entry.isIntersecting) entry.target.classList.add("sig-in");
         else entry.target.classList.remove("sig-in");
       });
-    }, { threshold: 0.6 });
+    }, { threshold: 0 });
     sigIO.observe(signature);
   } else if (signature){
     signature.classList.add("sig-in");
   }
 
-  // ---- pillar icons: flip in each time they scroll into view ----
+  // ---- pillar icons: ring draws a full circle each time they scroll into view ----
   var pillarIcons = document.querySelectorAll(".pillar .ic");
   if (pillarIcons.length && !reduceMotion && "IntersectionObserver" in window){
     var iconIO = new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
-        if (entry.isIntersecting) entry.target.classList.add("flip-in");
-        else entry.target.classList.remove("flip-in");
+        if (entry.isIntersecting) entry.target.classList.add("ring-in");
+        else entry.target.classList.remove("ring-in");
       });
-    }, { threshold: 0.4 });
+    }, { threshold: 0.35 });
     pillarIcons.forEach(function(ic){ iconIO.observe(ic); });
   } else {
-    pillarIcons.forEach(function(ic){ ic.classList.add("flip-in"); });
+    pillarIcons.forEach(function(ic){ ic.classList.add("ring-in"); });
   }
 })();
 </script>
